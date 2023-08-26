@@ -1,0 +1,6 @@
+E:\New folder\Online_Test_Web_App_MS.Net\Business_Object_Layer\bin\Debug\Business_Object_Layer.dll
+E:\New folder\Online_Test_Web_App_MS.Net\Business_Object_Layer\bin\Debug\Business_Object_Layer.pdb
+E:\New folder\Online_Test_Web_App_MS.Net\Business_Object_Layer\obj\Debug\Business_Object_Layer.csproj.AssemblyReference.cache
+E:\New folder\Online_Test_Web_App_MS.Net\Business_Object_Layer\obj\Debug\Business_Object_Layer.csproj.CoreCompileInputs.cache
+E:\New folder\Online_Test_Web_App_MS.Net\Business_Object_Layer\obj\Debug\Business_Object_Layer.dll
+E:\New folder\Online_Test_Web_App_MS.Net\Business_Object_Layer\obj\Debug\Business_Object_Layer.pdb
