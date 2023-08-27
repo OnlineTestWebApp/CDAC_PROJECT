@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business_Object_Layer
 {
-    internal class User
+    public class User
     {
         public String user_name { get; set; }
 

@@ -12,12 +12,25 @@ namespace Business_Object_Layer
 
         public int id { get; set; }
 
-        public string studentName { get; set; }
+        public string studentFirstName { get; set; }
+
+        public string studentLastName { get; set; }
 
         public string subject { get; set; }
 
-        public decimal marks { get; set; }
+        public double marks { get; set; }
 
-        public decimal percentage { get; set; }
+        public double percentage { get; set; }
+        public void print() 
+        {
+            Console.WriteLine(sessionId);
+            Console.WriteLine(id); 
+            Console.WriteLine(studentFirstName);
+            Console.WriteLine(studentLastName);
+            Console.WriteLine(subject);
+            Console.WriteLine(marks);
+            Console.WriteLine(percentage);
+        }
     }
+   
 }

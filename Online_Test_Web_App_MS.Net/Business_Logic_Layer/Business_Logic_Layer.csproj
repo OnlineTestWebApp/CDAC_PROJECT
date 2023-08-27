@@ -31,12 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Business_Object_Layer">
-      <HintPath>..\..\..\Online_Test_Web_App_MS.Net\Online_Test_Web_App\Business_Object_Layer\obj\Debug\net6.0\Business_Object_Layer.dll</HintPath>
-    </Reference>
-    <Reference Include="Data_Access_Layer">
-      <HintPath>..\..\..\Online_Test_Web_App_MS.Net\Online_Test_Web_App\Data_Access_Layer\obj\Debug\net6.0\Data_Access_Layer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,7 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubmitExam.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business_Object_Layer\Business_Object_Layer.csproj">
+      <Project>{e7664e65-63ca-44f2-8620-d50ddae92e62}</Project>
+      <Name>Business_Object_Layer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data_Access_Layer\Data_Access_Layer.csproj">
+      <Project>{62fcf0a2-7d40-4ed4-b497-a3f92581a3c8}</Project>
+      <Name>Data_Access_Layer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

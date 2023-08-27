@@ -43,15 +43,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Business_Logic_Layer">
-      <HintPath>..\..\..\Online_Test_Web_App_MS.Net\Online_Test_Web_App\Business_Logic_Layer\obj\Debug\net6.0\Business_Logic_Layer.dll</HintPath>
-    </Reference>
-    <Reference Include="Business_Object_Layer">
-      <HintPath>..\..\..\Online_Test_Web_App_MS.Net\Online_Test_Web_App\Business_Object_Layer\obj\Debug\net6.0\Business_Object_Layer.dll</HintPath>
-    </Reference>
-    <Reference Include="Data_Access_Layer">
-      <HintPath>..\..\..\Online_Test_Web_App_MS.Net\Online_Test_Web_App\Data_Access_Layer\obj\Debug\net6.0\Data_Access_Layer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -127,6 +118,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business_Logic_Layer\Business_Logic_Layer.csproj">
+      <Project>{8f98a454-93b0-47d7-aa90-aac19db9c396}</Project>
+      <Name>Business_Logic_Layer</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

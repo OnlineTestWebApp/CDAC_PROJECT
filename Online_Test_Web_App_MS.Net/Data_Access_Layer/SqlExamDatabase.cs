@@ -1,4 +1,5 @@
 ﻿using Business_Object_Layer;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -12,62 +13,58 @@ namespace Data_Access_Layer
     {
 
         String query;
-        Exam exam;
-        List<Exam> exam_list = new List<Exam>();
-        SqlConnection con = new SqlConnection($"data source=RAMENDRA\\SQLEXPRESS; Initial Catalog = user; Integrated Security=true");
-        SqlCommand cmd = new SqlCommand();
+        User user = new User();
+        MySqlConnection con = new MySqlConnection($"Server=localhost;User ID=root;Password=ramendra;Database=user");
 
-        public List<Exam> leaderboard()
+        public int studentLogin(int id,String studentfirdtname, String studentlastname) 
         {
+            MySqlCommand cmd = new MySqlCommand(query, con);
             cmd.Connection = con;
             con.Open();
-
-            query = "Select * from examtable ";
-            cmd.CommandText = query;
-            SqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-            try
-            {
-                while (reader.Read())
-                {
-                    exam.sessionId = int.Parse(reader[0].ToString());
-                    exam.id = reader.GetInt32(1);
-                    exam.studentName = reader.GetString(2);
-                    exam.subject = reader.GetString(3);
-                    exam.marks = reader.GetDecimal(4);
-                    exam.percentage = reader.GetDecimal(5);
-                    exam_list.Add(exam);
-                    Console.WriteLine(exam);
-                }
-            }
-            catch (NullReferenceException) { Console.WriteLine("null@@"); }
-            con.Close();
-
-            return exam_list;
+            query = $"insert into examTable values(0,{id},'{studentfirdtname}','{studentlastname}','NoSubject',0,0)";
+            cmd.CommandText = query;    
+            int noOfRows=cmd.ExecuteNonQuery();
+            con.Close();    
+            return noOfRows;
         }
 
-        public Exam studentSearch(String name)
+        public int submitExam(int sessionid,int id, String subject,double marks,double percentage)
         {
+            MySqlCommand cmd = new MySqlCommand(query, con);
             cmd.Connection = con;
             con.Open();
 
-            query = $"Select * from examtable where studentName='{name}'";
+            query = $"update examTable set sessionId={sessionid},subject='{subject}',marks={marks},percentage={percentage} where id={id}";
             cmd.CommandText = query;
-            SqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
+            int noOfRows=cmd.ExecuteNonQuery();
+            con.Close();
+            return noOfRows;
+            
+        }
+
+        public Dictionary<int, Exam> displayLeaderboard() 
+        {
+            Dictionary<int,Exam> studentList= new Dictionary<int,Exam>();
+            Exam exam = new Exam();
+            MySqlCommand cmd = new MySqlCommand(query, con);
+            cmd.Connection = con;
+            con.Open();
+
+            query = $"Select id, StudentFirstName,studentLastName,marks,percentage from examTable";
+            cmd.CommandText = query;
+            MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                exam.sessionId = int.Parse(reader[0].ToString());
-                exam.id = reader.GetInt32(1);
-                exam.studentName = reader.GetString(2);
-                exam.subject = reader.GetString(3);
-                exam.marks = reader.GetDecimal(4);
-                exam.percentage = reader.GetDecimal(5);
+                exam.id = reader.GetInt32(0);
+                exam.studentFirstName = reader.GetString(1);
+                exam.studentLastName = reader.GetString(2);
+                exam.marks = reader.GetDouble(3);
+                exam.percentage = reader.GetDouble(4);
+                studentList.Add(exam.id, exam);
+                exam.print();
             }
-
-            con.Close();
-
-            return exam;
+                con.Close();
+            return studentList;
         }
     }
 }
