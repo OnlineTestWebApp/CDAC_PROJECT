@@ -24,12 +24,12 @@ namespace OnlineTestWebApp.Controllers
         //Get:redirect
         public ActionResult redirect(String username, String password)
         {
-            String privilege="true";
+            String privilege;
             
-          //  privilege = _db.login(username, password);
+          privilege = _db.login(username, password);
 
 
-            if (privilege.Equals("true")) return View("admin");
+            if (privilege.Equals("true")) return View("leaderboard");
 
             if (privilege.Equals("false")) return View("instructions");
 

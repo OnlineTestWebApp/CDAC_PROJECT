@@ -8,13 +8,57 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
-<body>
-   
+<body style="background-color:aquamarine">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
+        .topnav {
+            overflow: hidden;
+            background-color: #0077be;
+            margin:20px
+            
+        }
+
+            .topnav a {
+                float: right;
+                display: block;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                padding-top:68px;
+            }
+
+            .topnav img {
+                float: left;
+                max-width: 100%;
+                max-height: 100%;
+                margin-right: 20px;
+            }
+
+            .topnav a:hover {
+                background-color: #005c99;
+                color: white;
+            }
+
+            .topnav a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+    </style>
+    <div class="topnav" >
+        <img src="~/Images/cdaclogo4.jpg"  style="width:100px">
+        <a href="Home/index">Logoff</a>
+        <a href="Home/register">Register</a>
+        <a href="Home/about">About Us</a>
+    </div>
     <div class="container body-content">
         @RenderBody()
-      
-        
+
+
     </div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
