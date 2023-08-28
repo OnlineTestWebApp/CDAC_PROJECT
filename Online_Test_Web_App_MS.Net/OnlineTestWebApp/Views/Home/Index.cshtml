@@ -1,0 +1,83 @@
+﻿@{ ViewBag.title = "redirect"; }
+@using OnlineTestWebApp.Controllers;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Online Exam</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 10px;
+            margin : 10px;
+            margin-left:0;
+        }
+
+            button:hover {
+                background-color: #195a17;
+            }
+    </style>
+
+</head>
+<body>
+    <h1>LOGIN</h1>
+    <form id="loginform" method="post" action="redirect">
+        <label for="name">Username</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password</label>
+        <input style="display:block" type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+        <a href="registration">Regester</a>
+     
+        </form>
+        <p id="resultMessage"></p>
+        <script src="script.js"></script>
+</body>
+</html>
+<script>
+
+</script>

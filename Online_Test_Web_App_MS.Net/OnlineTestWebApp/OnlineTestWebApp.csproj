@@ -15,7 +15,7 @@
     <AssemblyName>OnlineTestWebApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <IISExpressSSLPort>44318</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -94,7 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -106,8 +106,14 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Home\admin.cshtml" />
+    <Content Include="Views\Home\instructions.cshtml" />
+    <Content Include="Views\Home\registration.cshtml" />
+    <Content Include="Views\Home\test.cshtml" />
+    <Content Include="Views\Home\submit.cshtml" />
+    <Content Include="Views\Home\leaderboard.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -117,12 +123,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Models\LOGIN_M\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Business_Logic_Layer\Business_Logic_Layer.csproj">
       <Project>{8f98a454-93b0-47d7-aa90-aac19db9c396}</Project>
       <Name>Business_Logic_Layer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Business_Object_Layer\Business_Object_Layer.csproj">
+      <Project>{e7664e65-63ca-44f2-8620-d50ddae92e62}</Project>
+      <Name>Business_Object_Layer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data_Access_Layer\Data_Access_Layer.csproj">
+      <Project>{62fcf0a2-7d40-4ed4-b497-a3f92581a3c8}</Project>
+      <Name>Data_Access_Layer</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -140,11 +154,10 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51428</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44318/</IISUrl>
+          <IISUrl>http://localhost:51428/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>https://Apache2.4:80</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

@@ -1,0 +1,47 @@
+﻿@using Data_Access_Layer;
+@using Business_Object_Layer;
+@{ ViewBag.title = "leaderboard"; }
+<table>
+    <tr>
+        <td>
+            Id
+        </td>
+        <td>
+            First Name
+        </td>
+        <td>
+            Last Name
+        </td>
+        <td>
+            Marks
+        </td>
+        <td>
+            Percentage
+        </td>
+    </tr>
+
+    @{ var list = (Dictionary<int, Exam>)ViewData["LIST"];}
+
+    @{ foreach (var kvp in list)
+        {
+        <tr>
+            @kvp.Value
+            <td>
+                @kvp.Value.id;
+            </td>
+            <td>
+                @kvp.Value.studentFirstName
+            </td>
+            <td>
+                @kvp.Value.studentLastName
+            </td>
+            <td>
+                @kvp.Value.marks
+            </td>
+            <td>
+                @kvp.Value.percentage
+            </td>
+        </tr>
+
+            } }
+</table>

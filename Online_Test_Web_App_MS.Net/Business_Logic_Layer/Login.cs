@@ -7,20 +7,22 @@ using System.Threading.Tasks;
 
 namespace Business_Logic_Layer
 {
-    internal class Login
+    public class Login
     {
-        SqlUserDatabase _db;
-        SqlExamDatabase _examDb;
-        public Boolean loginConfirmation(String username, String password) 
+        SqlUserDatabase _db = new SqlUserDatabase();
+        SqlExamDatabase _examDb= new SqlExamDatabase();
+        public String loginConfirmation(String username, String password) 
         {
-            String privilege = _db.login(username, password);
+            String privilege;
+           
+                 privilege = _db.login(username, password);
             
-            if (privilege.Equals("true") || privilege.Equals("false")) 
-            {
-               return true;
-            }
-         
-            else { return false; }  
+            
+            if (privilege.Equals("true")) return "Welcome! to the Admin login";
+            
+            if (privilege.Equals("false")) return "Welcome! to the Student login";
+
+            else  return "Wrong username or password"; 
         }
 
         public void regestration (int id,String firstName,String lastName,String username, String password,String privilege) 

@@ -45,7 +45,7 @@ namespace Data_Access_Layer
         public Dictionary<int, Exam> displayLeaderboard() 
         {
             Dictionary<int,Exam> studentList= new Dictionary<int,Exam>();
-            Exam exam = new Exam();
+            
             MySqlCommand cmd = new MySqlCommand(query, con);
             cmd.Connection = con;
             con.Open();
@@ -55,6 +55,7 @@ namespace Data_Access_Layer
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
+                Exam exam = new Exam();
                 exam.id = reader.GetInt32(0);
                 exam.studentFirstName = reader.GetString(1);
                 exam.studentLastName = reader.GetString(2);

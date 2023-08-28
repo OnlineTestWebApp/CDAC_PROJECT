@@ -20,14 +20,15 @@ namespace Data_Access_Layer
             MySqlCommand cmd = new MySqlCommand(query, con);
             cmd.Connection = con;
             con.Open();
-            
+            String privilege = null;
             query = $"Select privilege from userTable where userName='{username}' and passWord= '{password}'";
          cmd.CommandText = query;   
            MySqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-            String privilege = reader.GetString(0);
-        
-
+            if (reader.Read())
+            {
+                 privilege = reader.GetString(0);
+            }
+            reader.Close();
             return privilege;
         }
 
