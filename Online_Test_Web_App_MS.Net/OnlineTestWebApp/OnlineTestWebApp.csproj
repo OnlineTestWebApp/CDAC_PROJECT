@@ -110,7 +110,7 @@
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Home\admin.cshtml" />
     <Content Include="Views\Home\instructions.cshtml" />
-    <Content Include="Views\Home\registration.cshtml" />
+    <Content Include="Views\Home\register.cshtml" />
     <Content Include="Views\Home\test.cshtml" />
     <Content Include="Views\Home\submit.cshtml" />
     <Content Include="Views\Home\leaderboard.cshtml" />

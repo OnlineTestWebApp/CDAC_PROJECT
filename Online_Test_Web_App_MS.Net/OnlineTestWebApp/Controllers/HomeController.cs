@@ -17,19 +17,15 @@ namespace OnlineTestWebApp.Controllers
         SqlExamDatabase _exam = new SqlExamDatabase();
         // GET: index
         public ActionResult Index()
-        {
-           
-              
-          return View();
-            
-           
+        { 
+          return View();   
         }
         //Get:redirect
         public ActionResult redirect(String username, String password)
         {
-            String privilege;
+            String privilege="true";
             
-            privilege = _db.login(username, password);
+          //  privilege = _db.login(username, password);
 
 
             if (privilege.Equals("true")) return View("admin");
@@ -39,8 +35,8 @@ namespace OnlineTestWebApp.Controllers
             else return View("Index");
             
         }
-        //Get:registration
-        public ActionResult registration()
+        //Get:register
+        public ActionResult register()
         {
             return View();
         }

@@ -1,47 +1,159 @@
 ﻿@using Data_Access_Layer;
 @using Business_Object_Layer;
 @{ ViewBag.title = "leaderboard"; }
-<table>
-    <tr>
-        <td>
-            Id
-        </td>
-        <td>
-            First Name
-        </td>
-        <td>
-            Last Name
-        </td>
-        <td>
-            Marks
-        </td>
-        <td>
-            Percentage
-        </td>
-    </tr>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-    @{ var list = (Dictionary<int, Exam>)ViewData["LIST"];}
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
 
-    @{ foreach (var kvp in list)
-        {
+            .navbar a {
+                float: left;
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+            .navbar img {
+                float: left;
+                max-width: 100%;
+                max-height: 100%;
+                margin-right: 20px;
+            }
+
+            .navbar a:hover {
+                background-color: #111;
+            }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        th {
+            background-color: rebeccapurple;
+            color: white;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            box-shadow: 5px 10px #888888;
+        }
+        td {
+            background-color: saddlebrown;
+            color: white;
+        }
+        .topnav {
+            overflow: hidden;
+            background-color: #0077be;
+        }
+
+            .topnav a {
+                float: right;
+                display: block;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+            .topnav img {
+                float: left;
+                max-width: 100%;
+                max-height: 100%;
+                margin-right: 20px;
+            }
+
+            .topnav a:hover {
+                background-color: #005c99;
+                color: white;
+            }
+
+            .topnav a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <img src="your_image_url_here" alt="CDAC Logo">
+        <a href="#logoff">Logoff</a>
+        <a href="#register">Register</a>
+        <a href="#about">About Us</a>
+    </div>
+
+
+    <h2 style="text-align:center">Leaderboard</h2>
+
+    <table>
         <tr>
-            @kvp.Value
             <td>
-                @kvp.Value.id;
+                Id
             </td>
             <td>
-                @kvp.Value.studentFirstName
+                First Name
             </td>
             <td>
-                @kvp.Value.studentLastName
+                Last Name
             </td>
             <td>
-                @kvp.Value.marks
+                Marks
             </td>
             <td>
-                @kvp.Value.percentage
+                Percentage
             </td>
         </tr>
 
+        @{ var list = (Dictionary<int, Exam>)ViewData["LIST"];}
+        
+        
+
+
+        @{ foreach (var kvp in list)
+            {
+                <tr>
+                    @kvp.Value
+                    <th>
+                        @kvp.Value.id;
+                    </th>
+                    <th>
+                        @kvp.Value.studentFirstName
+                    </th>
+                    <th>
+                        @kvp.Value.studentLastName
+                    </th>
+                    <th>
+                        @kvp.Value.marks
+                    </th>
+                    <th>
+                        @kvp.Value.percentage
+                    </th>
+                </tr>
+
             } }
-</table>
+    </table>
+
+</body>
+</html>
+
+
