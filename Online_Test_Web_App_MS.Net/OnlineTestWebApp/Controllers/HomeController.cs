@@ -72,6 +72,10 @@ namespace OnlineTestWebApp.Controllers
             return View();
         }
 
-
+        //Get:about
+        public ActionResult about()
+        {
+            return View();
+        }
     }
 }
