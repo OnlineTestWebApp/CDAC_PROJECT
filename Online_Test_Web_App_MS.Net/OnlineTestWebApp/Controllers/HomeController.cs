@@ -12,6 +12,7 @@ namespace OnlineTestWebApp.Controllers
 {
     public class HomeController : Controller
     {
+        String Name;
         Login login = new Login();
         SqlUserDatabase _db = new SqlUserDatabase();
         SqlExamDatabase _exam = new SqlExamDatabase();
@@ -36,8 +37,11 @@ namespace OnlineTestWebApp.Controllers
             
         }
         //Get:register
-        public ActionResult register()
+        public ActionResult register(String firstname, String lastname,String username, String password,String privilege)
         {
+
+            _db.regestration(firstname, lastname, username, password, privilege);
+
             return View();
         }
         //Get:instructions
@@ -62,7 +66,7 @@ namespace OnlineTestWebApp.Controllers
         //Get:leaderboard
         public ActionResult leaderboard()
         {
-           IDictionary<int,Exam> list= _exam.displayLeaderboard();
+          SortedDictionary<double,Exam> list= _exam.displayLeaderboard();
 
             ViewData["LIST"]=list;
             return View();

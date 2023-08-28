@@ -124,9 +124,9 @@
             </td>
         </tr>
 
-        @{ var list = (Dictionary<int, Exam>)ViewData["LIST"];}
-        
-        
+        @{ var list = (SortedDictionary<double, Exam>)ViewData["LIST"]; }
+       
+  
 
 
         @{ foreach (var kvp in list)

@@ -42,9 +42,9 @@ namespace Data_Access_Layer
             
         }
 
-        public Dictionary<int, Exam> displayLeaderboard() 
+        public SortedDictionary<double, Exam> displayLeaderboard() 
         {
-            Dictionary<int,Exam> studentList= new Dictionary<int,Exam>();
+           SortedDictionary<double,Exam> studentList= new SortedDictionary<double,Exam>();
             
             MySqlCommand cmd = new MySqlCommand(query, con);
             cmd.Connection = con;
@@ -61,7 +61,7 @@ namespace Data_Access_Layer
                 exam.studentLastName = reader.GetString(2);
                 exam.marks = reader.GetDouble(3);
                 exam.percentage = reader.GetDouble(4);
-                studentList.Add(exam.id, exam);
+                studentList.Add(exam.marks, exam);
                 exam.print();
             }
                 con.Close();
