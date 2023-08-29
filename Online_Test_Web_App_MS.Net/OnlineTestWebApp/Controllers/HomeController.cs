@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Business_Logic_Layer;
 using Data_Access_Layer;
 using Business_Object_Layer;
+using System.Web.WebPages;
 
 namespace OnlineTestWebApp.Controllers
 {
@@ -29,9 +30,9 @@ namespace OnlineTestWebApp.Controllers
           privilege = _db.login(username, password);
 
 
-            if (privilege.Equals("true")) return View("leaderboard");
+            if (privilege.Equals("true")) return View("Home/leaderboard");
 
-            if (privilege.Equals("false")) return View("instructions");
+            if (privilege.Equals("false")) return View("Home/instructions");
 
             else return View("Index");
             
@@ -39,9 +40,14 @@ namespace OnlineTestWebApp.Controllers
         //Get:register
         public ActionResult register(String firstname, String lastname,String username, String password,String privilege)
         {
-
-            _db.regestration(firstname, lastname, username, password, privilege);
-
+            String message="";
+            if (!firstname.IsEmpty() || !lastname.IsEmpty() || !username.IsEmpty() || !password.IsEmpty() || !privilege.IsEmpty())
+            {
+                _db.regestration(firstname, lastname, username, password, privilege);
+                message = "Successfully Registred";
+            }
+            else message = "Error! Please try Again";
+            ViewData["MESSAGE"]=message;
             return View();
         }
         //Get:instructions
@@ -51,8 +57,9 @@ namespace OnlineTestWebApp.Controllers
         }
         
         //Get:test
-        public ActionResult test()
+        public ActionResult test( )
         {
+            
             List<Questions> questions = QuestionBank.GetQuestions();
             ViewData["LIST"]=questions;
             return View();

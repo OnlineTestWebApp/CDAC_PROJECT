@@ -74,15 +74,15 @@
                 <button type="submit" class="quiz-button">Submit</button>
                @* <a href="Submit" class="quiz-button">Submit</a>*@
             </div>
-        </form>
+        </form action="test">
         <div class="quiz-results">
-            You scored <span id="score"></span>%.
+            You scored <span id="score" name="persentage"></span>%.
             <a href="index">End session</a>
         </div>
     </div>
 
     <script>
-        // Quiz data
+        
         var questions = [
             { question: "Question 1", options: ["Option A", "Option B", "Option C", "Option D"], correct: "A" },
             { question: "Question 2", options: ["Option A", "Option B", "Option C", "Option D"], correct: "B" },
@@ -90,22 +90,22 @@
             { question: "Question 4", options: ["Option A", "Option B", "Option C", "Option D"], correct: "D" },
         ];
 
-        // Quiz state
+        
         var currentQuestion = 0;
         var answers = [];
 
-        // DOM elements
+       
         var quizForm = document.getElementById("quiz-form");
         var questionNumberElement = document.getElementById("question-number");
         var optionsElement = document.querySelector(".quiz-options");
         var previousButton = document.getElementById("previous-button");
         var nextButton = document.getElementById("next-button");
 
-        // Timer
+       
         var timeElement = document.getElementById("time");
         var timeRemaining = parseInt(timeElement.textContent);
 
-        // Update timer
+        
         var timer = setInterval(function () {
             timeRemaining--;
             timeElement.textContent = timeRemaining;
@@ -116,7 +116,7 @@
             }
         }, 1000);
 
-        // Update question
+        
         function updateQuestion() {
             var question = questions[currentQuestion];
             questionNumberElement.textContent = currentQuestion + 1;
@@ -126,7 +126,7 @@
                 var option = question.options[i];
                 var li = document.createElement("li");
                 li.className = "quiz-option";
-                // li.innerHTML = '<input type="radio" name="option" value="' + option + '">' + option;
+                
                 li.innerHTML = '<input type="radio" name="option" value="' + String.fromCharCode(65 + i) + '">' + option;
 
                 optionsElement.appendChild(li);
@@ -143,19 +143,19 @@
             nextButton.disabled = currentQuestion === questions.length - 1;
         }
 
-        // Previous question
+      
         previousButton.addEventListener("click", function () {
             currentQuestion--;
             updateQuestion();
         });
 
-        // Next question
+       
         nextButton.addEventListener("click", function () {
             currentQuestion++;
             updateQuestion();
         });
 
-        // Submit quiz
+        
         quizForm.addEventListener("submit", function (event) {
             event.preventDefault();
             submitQuiz();
@@ -180,7 +180,7 @@
             document.querySelector(".quiz-results").style.display = "block";
         }
 
-        // Save answer
+        
         quizForm.addEventListener("change", function (event) {
             if (event.target.name === "option") {
                 answers[currentQuestion] = event.target.value;

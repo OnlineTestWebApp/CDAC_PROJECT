@@ -18,14 +18,15 @@ namespace TestApp
 
           
 
-            List<Questions> questions = QuestionBank.GetQuestions();
+            //List<Questions> questions = QuestionBank.GetQuestions();
 
-            foreach (Questions question in questions)
-            {
-                Console.WriteLine(question.question);
-            }
-
-
+            //foreach (Questions question in questions)
+            //{
+            //    Console.WriteLine(question.question);
+            //}
+            SqlUserDatabase sqlUserDatabase = new SqlUserDatabase();
+            String st = sqlUserDatabase.login("ramendrapandey", "1234qwert");
+            Console.WriteLine(st);
         }
     }
 
